@@ -9,6 +9,6 @@ export const environment = {
   loggerURL: "/rest/logger",
   loggerLevel: Level.DEBUG,
   //baseURL: "https://demo9396170.mockable.io",
-  baseURL: "http://localhost:8080/AngularSpring",
+  baseURL: "http://54.154.227.128:8080//AngularSpring",
   timeout: 5000
 };
