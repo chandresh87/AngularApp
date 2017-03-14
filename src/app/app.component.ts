@@ -46,8 +46,8 @@ export class AppComponent implements OnDestroy, OnInit {
   //AppComponent initialization lifecycle hook. Print the current environment value from configuration
   ngOnInit() {
     this.logger.log("environment:" + environment.production);
-    var baseurl = this.configDataService.getConfig('baseURL');
-    this.logger.log(baseurl)
+   // var baseurl = this.configDataService.getConfig('baseURL');
+   // this.logger.log(baseurl)
   }
 
 }
