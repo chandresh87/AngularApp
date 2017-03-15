@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChildData } from '../../domain/ChildData';
+import { ChildDataCollection } from '../../domain/childDataCollection';
 import { ChildBenefitHistoryService } from '../../services/child-benefit-history.service';
-import {LoggingService} from '../../../architecture/logging/logging.service';
+import { LoggingService } from '../../../architecture/logging/logging.service';
 
 
 @Component({
@@ -11,17 +12,23 @@ import {LoggingService} from '../../../architecture/logging/logging.service';
 })
 export class ChildHistoryComponent implements OnInit {
 
- ChildDataHistory: ChildData[];
+  ChildDataHistory: ChildData[];
 
   constructor(private childBenefitHistoryService: ChildBenefitHistoryService, private loggingService: LoggingService) { }
 
   ngOnInit() {
 
-     this.ChildDataHistory =   this.childBenefitHistoryService.getHistory();
-    
-      //(ChildDataHistorys => this.ChildDataHistory = ChildDataHistorys);
-       //alert(this.ChildDataHistory);
-       
+
+
+    this.childBenefitHistoryService.getHistory().subscribe((result) => {
+      this.ChildDataHistory = result.childCollection
+    }, err => {
+      throw err
+    });
+
+    //(ChildDataHistorys => this.ChildDataHistory = ChildDataHistorys);
+    //alert(this.ChildDataHistory);
+
   }
 
 }

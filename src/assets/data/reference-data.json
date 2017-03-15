@@ -1,0 +1,13 @@
+{
+   "data" : [
+        {"type": "STATUS", "id": "00000010", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"Married or in a civil partnership"},
+        {"type": "STATUS", "id": "00000011", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"Married"},
+        {"type": "STATUS", "id": "00000012", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"Divorced"},
+        {"type": "COUNTRIES", "id": "00000013", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"NORTHERN IRELAND"},
+        {"type": "COUNTRIES", "id": "00000014", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"GREAT BRITAIN"},
+        {"type": "COUNTRIES", "id": "00000015", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"ISLE OF MAN"},
+        {"type": "COUNTRIES", "id": "00000016", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"AUSTRALIA"},
+        {"type": "ERROR_CODE", "id": "1000", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"Testing Error"},
+        {"type": "ERROR_CODE", "id": "1001", "start_Date": "01/01/1900","end_Date": "01/01/2078","values":"Tested Error"}
+    ]
+}

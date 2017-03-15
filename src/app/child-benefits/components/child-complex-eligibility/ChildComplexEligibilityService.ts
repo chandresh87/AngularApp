@@ -1,26 +1,33 @@
 
-import { ChildComplexEligibilityServiceHandler } from './ChildComplexEligibilityServiceHandler'
+
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { LoggingService } from '../../../architecture/logging/logging.service'
+import { LoggingService } from '../../../architecture/logging/logging.service';
+import { ConfigService } from '../../../architecture/config/config.service';
 import { ChildComplexEligibilty } from '../../../child-benefits/domain/ChildComplexEligibilty'
-import { SerilizationHelper } from '../../../architecture/serilization/SerilizationHelper';
+import { SerializationHelper } from '../../../architecture/serialization/SerializationHelper';
 import { Injectable } from '@angular/core';
+import { RestTemplate } from '../../../architecture/message-handler/rest-template'
+
+import { ChbClaimantDetails } from '../chb-claimant-child-details/model/ClaimaintChildDetails'
+import { ResponseMessage } from '../../../architecture/message-handler/response-message'
 
 @Injectable()
 export class ChildComplexEligibilityService {
-	ComplexEligibilityServiceHandler: ChildComplexEligibilityServiceHandler = new ChildComplexEligibilityServiceHandler(this.logger, this.http);
 
-	constructor(public logger: LoggingService, public http: Http) {
+
+	constructor(public logger: LoggingService, public http: Http, public configDataService: ConfigService, public restTemplate: RestTemplate) {
 
 	}
 
 
-	postData(childComplexEligibilty: ChildComplexEligibilty) {
-		this.logger.info(SerilizationHelper.Serilize(childComplexEligibilty));
-		console.log("post object is " + SerilizationHelper.Serilize(childComplexEligibilty));
 
-		return this.ComplexEligibilityServiceHandler.post(childComplexEligibilty);
+	postDataNew(childComplexEligibilty: ChildComplexEligibilty) {
 
+		return this.restTemplate.postForEntity("http://demo3630027.mockable.io/save", childComplexEligibilty);
+
+	}
+	getForObject() {
+		//return this.restTemplate.getForObject("http://demo3630027.mockable.io/get",ChbClaimantDetails);
 	}
 
 }

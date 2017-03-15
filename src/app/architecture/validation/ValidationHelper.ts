@@ -29,21 +29,19 @@ export abstract class ValidationHelper implements ValidatorInterface {
   getFormError(): any {
 
     return this.formErrors;
-
   }
+
   onValueChanged(validationForm: FormGroup, formErrors: any, data?: any) {
     if (!validationForm) { return; }
     const form = validationForm;
     const validationMessages = this.getValidationMessages();
 
-    console.log(formErrors);
+    //console.log(formErrors);
     for (const field in formErrors) {
       // clear previous error message (if any)
 
       formErrors[field] = '';
       const control = form.get(field);
-
-
       if (control && control.dirty && !control.valid) {
         const messages = validationMessages[field];
         for (const key in control.errors) {
@@ -52,10 +50,7 @@ export abstract class ValidationHelper implements ValidatorInterface {
         }
 
       }
-
-
     }
-
   }
 
   subscribeChanges(validationForm: FormGroup, formErrors: any) {

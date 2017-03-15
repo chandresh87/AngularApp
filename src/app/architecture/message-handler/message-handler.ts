@@ -7,10 +7,10 @@
  **/
 import { Observable } from 'rxjs/Observable';
 
-export interface MessageHandler{
+export interface MessageHandler {
     get(): Observable<any>;
     post(...param: any[]): Observable<any>;
     put(param: any): Observable<any>;
-    delete(key:string,value:string): Observable<any>;
-    options():Observable<any>;
+    delete(key: string, value: string): Observable<any>;
+    options(): Observable<any>;
 }

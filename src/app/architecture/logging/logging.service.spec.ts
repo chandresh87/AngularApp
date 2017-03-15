@@ -5,17 +5,34 @@ import {
   HttpModule, Http, Response, Headers, RequestOptions,
   BaseRequestOptions, XHRBackend, ResponseOptions
 } from '@angular/http';
+import { APP_INITIALIZER } from '@angular/core';
+
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { LoggingService } from './logging.service';
+
+import { ConfigService } from '../config/config.service';
 import { Logger } from './logger';
 import { LoggerWSHandler } from './logger-ws-handler';
+
+export declare const LOG_INITIALIZER: any;
+
+export const params = {};
+params['baseURL'] = "log";
+
+/**
+ * Mock ConfigService class for DI injection into LoggerWSHandler
+ */
+class MockConfigService {
+  getConfig(Key: any) {
+    return "mock value returned";
+  }
+}
 
 describe('LoggingService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        LoggingService,
-        LoggerWSHandler,
+        { provide: ConfigService, useClass: MockConfigService },
         MockBackend,
         BaseRequestOptions,
         {
@@ -25,12 +42,15 @@ describe('LoggingService', () => {
           (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
             return new Http(backend, defaultOptions);
           }
-        }
+        },
+        LoggingService,
+        LoggerWSHandler,
       ],
       imports: [
         HttpModule
       ]
     });
+
     spyOn(console, 'assert');
     spyOn(console, 'error');
     spyOn(console, 'warn');
@@ -109,12 +129,12 @@ describe('LoggingService', () => {
   // Save
   it('should send a message to the server',
     inject([LoggingService, MockBackend], (service: LoggingService, mock: MockBackend) => {
-      
+
       let responseOptions = new ResponseOptions({ body: JSON.stringify({ data: 'success' }) });
       mock.connections.subscribe(c => c.mockRespond(new Response(responseOptions)));
 
       service.setLevel(5);
-      var res = service.save('test');
+      var res = service.sendToServer('test');
 
       res.subscribe(res => {
         expect(res).toEqual('success');

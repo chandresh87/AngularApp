@@ -50,8 +50,8 @@ export class LoggingService extends Logger {
 
   debug(...args: any[]): void {
     if (this.isDebugEnabled()) {
-      !this.production && (console && console.log) 
-      && (<any>console)[CONSOLE_DEBUG_METHOD](...args);
+      !this.production && (console && console.log)
+        && (<any>console)[CONSOLE_DEBUG_METHOD](...args);
       this.subscribe(...args);
     }
   }
@@ -76,7 +76,7 @@ export class LoggingService extends Logger {
   subscribe(...args: any[]) {
     this.webservice.post(...args).subscribe(
       () => { },
-      error => {console.log(error)}
+      error => { console.log(error) }
     );
   }
 

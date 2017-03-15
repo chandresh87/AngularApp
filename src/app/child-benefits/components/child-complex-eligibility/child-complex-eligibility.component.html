@@ -2,9 +2,9 @@
 <app-subheading text="Claimants's last address in Other Member State"></app-subheading>
 
 <form [formGroup]="validationForm" (ngSubmit)="onSubmit()">
-    
+
     <div class="row">
-    
+
         <div class="col-md-6 col-xs-12">
 
             <!-- Line 1 -->
@@ -43,11 +43,15 @@
             </div>
 
         </div>
-        
+
     </div>
 
-    <app-alert *ngIf="formSubmittedMessage" type="success" text="{{formSubmittedMessage}}"></app-alert>
-    <app-form-actions [group]="validationForm" parentPath="/child-benefits"></app-form-actions>
+    <button type="button" class="btn btn-default" (click)="onSubmit()" [disabled]="!validationForm.valid">Submit</button>
+    <button type="button" class="btn btn-default" (click)="reset()">Reset</button>
+
+
+    <!--  <app-alert *ngIf="formSubmittedMessage" type="success" text="{{formSubmittedMessage}}"></app-alert>
+    <app-form-actions [group]="validationForm" parentPath="/child-benefits"></app-form-actions>-->
 
 </form>
 <!-- End of Form -->

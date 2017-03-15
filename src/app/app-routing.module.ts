@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './itmp-browser/components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './itmp-browser/components/page-not-found/page-not-found.component';
+import { PreferencesComponent } from './itmp-browser/components/preferences/preferences.component';
 
 const routes: Routes = [
-  
+
   // Dashboard
   { path: '',   redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+
+  // Preferences
+  { path: 'preferences', component: PreferencesComponent, data: { title: 'Preferences' } },
 
   // Child Benefits
   { 
@@ -19,7 +23,7 @@ const routes: Routes = [
 
   // 404
   { path: '**', component: PageNotFoundComponent, data: { title: 'Page Not Found' } },
-
+ 
 ];
 
 @NgModule({
@@ -27,4 +31,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

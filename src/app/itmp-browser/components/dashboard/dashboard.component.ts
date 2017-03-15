@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-   //  console.log(this.configDataService.getConfig('baseURL'));
+     console.log(this.configDataService.getConfig('baseURL'));
   }
 
 }

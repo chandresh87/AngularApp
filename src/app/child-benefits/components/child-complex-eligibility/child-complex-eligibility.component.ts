@@ -4,6 +4,9 @@ import { ChildComplexEligibilityValidation } from './ChildComplexEligibilityVali
 import { FormBuilder } from '@angular/forms';
 import { ChildComplexEligibilty } from '../../../child-benefits/domain/ChildComplexEligibilty'
 import { ChildComplexEligibilityService } from './ChildComplexEligibilityService';
+import { ResponseMessage } from '../../../architecture/message-handler/response-message'
+import { ResponseEntity } from '../../../architecture/message-handler/response-entity'
+
 
 @Component({
   selector: 'child-complex-eligibility',
@@ -27,7 +30,21 @@ export class ChildComplexEligibilityComponent extends BuildFormHelper implements
   onSubmit() {
 
     this.childComplexEligibilty = this.getSubmittedValues();
-    this.formSubmittedMessage = this.service.postData(this.childComplexEligibilty);
+    // this.formSubmittedMessage = this.service.postData(this.childComplexEligibilty);
+    let responseEntity: ResponseEntity;
+    let responseMessage: ResponseMessage;
+
+    this.service.postDataNew(this.childComplexEligibilty).subscribe(
+      reponse => {
+        console.log("returned respons is" + reponse);
+        responseEntity = reponse;
+        responseMessage = responseEntity.getBody();
+        console.log("response is " + responseMessage.message);
+      });
+
+
+
+
     this.formSubmittedMessage = "Details Saved Successfully";
   }
 

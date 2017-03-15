@@ -15,8 +15,8 @@ export class PageNotFoundComponent implements OnInit {
   }
 
   ngOnInit() {
-   // var baseurl = this.configDataService.getConfig('baseURL');
-   // console.log(baseurl)
+    var baseurl = this.configDataService.getConfig('baseURL');
+    console.log(baseurl)
   }
 
 }

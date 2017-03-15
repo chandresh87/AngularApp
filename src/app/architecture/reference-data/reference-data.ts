@@ -1,18 +1,18 @@
-import {ReferenceDataType} from './reference-data.enum';
+import { ReferenceDataType } from './reference-data.enum';
 
 export class ReferenceData {
-    type: ReferenceDataType; 
-    id:string;
-    start_date:string;
-    end_date:string;
-    VALUE:string;
-    constructor(type:ReferenceDataType,id:string,start_date:string,end_date:string,VALUE:string){
-        this.type=type;
-        this.id=id;
-        this.start_date=start_date;
-        this.end_date=end_date;
-        this.VALUE=VALUE;
-    } 
+    type: ReferenceDataType;
+    id: string;
+    start_Date: string;
+    end_Date: string;
+    values: string;
+    constructor() {
+        this.type = undefined;
+        this.id = undefined;
+        this.start_Date = undefined;
+        this.end_Date = undefined;
+        this.values = undefined;
+    }
 }
 
 

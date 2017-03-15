@@ -12,13 +12,27 @@ import { HeadingComponent } from './heading/heading.component';
 import { FormActionsComponent } from './form-actions/form-actions.component';
 import { SubheadingComponent } from './subheading/subheading.component';
 import { AlertComponent } from './alert/alert.component';
+import { TooltipModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    TooltipModule
   ],
-  declarations: [LogoComponent, HeaderComponent, FooterComponent, IconComponent, DashPanelComponent, SideMenuComponent, SearchComponent, HeadingComponent, FormActionsComponent, SubheadingComponent, AlertComponent ],
+  declarations: [
+    LogoComponent,
+    HeaderComponent,
+    FooterComponent,
+    IconComponent,
+    DashPanelComponent,
+    SideMenuComponent,
+    SearchComponent,
+    HeadingComponent,
+    FormActionsComponent,
+    SubheadingComponent,
+    AlertComponent
+  ],
   exports: [
     LogoComponent,
     HeaderComponent,

@@ -1,0 +1,24 @@
+<div class="no-menu-container">
+
+  <app-heading text="Preferences"></app-heading>
+  <app-subheading text="Manage your system preferences"></app-subheading>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+
+      <form id="preferences">
+
+        <div class="form-group">
+          <label for="theme" class="control-label">Theme Switcher:</label>
+          <select name="theme" class="form-control" (change)="setTheme($event.target)">
+            <option value="standard">Standard</option>
+            <option value="high-contrast">High Contrast</option>
+          </select>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

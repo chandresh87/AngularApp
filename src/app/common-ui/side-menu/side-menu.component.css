@@ -1,6 +1,6 @@
 .side-menu {
     width: 280px;
-    z-index: 20000;
+    z-index: 600;
     float: left;
     position: relative;
     left: 0;
@@ -120,7 +120,7 @@
     line-height: 1;
     cursor: pointer;
     cursor: hand;
-    z-index: 40000;
+    z-index: 1000;
     color: white;
     transition: transform 0.2s cubic-bezier(0.0,0.0,0.2,1);
 }

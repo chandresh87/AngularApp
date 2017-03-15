@@ -5,10 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // Custom Modules
-import { ArchitectureModule } from '../architecture/architecture.module';
 import { CommonUiModule } from '../common-ui/common-ui.module';
 import { ItmpBrowserModule } from '../itmp-browser/itmp-browser.module';
+
+// Vendor Modules
 import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
+import { OrderListModule, DataTableModule, TooltipModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -23,10 +25,14 @@ import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
     HttpModule,
 
     // Custom Modules
-    ArchitectureModule,
     CommonUiModule,
     ItmpBrowserModule,
-    Ng2BreadcrumbModule
+
+    // Vendor Modules
+    Ng2BreadcrumbModule,
+    OrderListModule,
+    DataTableModule,
+    TooltipModule
 
   ]
 })

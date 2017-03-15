@@ -32,57 +32,35 @@ export class CustomErrorHandler implements ErrorHandler {
     // class. This is being done with an Options object (which is being defaulted in the providers).
     constructor(
         logService: LoggingService,
-        @Inject( ERROR_HANDLER_OPTIONS ) options: ErrorHandlerOptions
-        ) {
-
+        @Inject(ERROR_HANDLER_OPTIONS) options: ErrorHandlerOptions
+    ) {
         this.logService = logService;
         this.options = options;
     }
-
 
     // ---
     // PUBLIC METHODS.
     // ---
 
-
     // Handle the given error.
-    public handleError( error: any ) : void {
+    public handleError(error: any): void {
 
-        // Log to the console.
         try {
-            console.group( "ErrorHandler" );
-            console.error( error.message );
-            console.error( error.stack );
-            console.groupEnd();
-
-        } catch ( handlingError ) {
-
-            console.group( "ErrorHandler" );
-            console.warn( "Error when trying to output error." );
-            console.error( handlingError );
-            console.groupEnd();
-        }
-
-        // Send to the error-logging service.
-        try {
-
             this.options.unwrapError
-                ? this.logService.error( this.findOriginalError( error ) )
-                : this.logService.error( error )
-            ;
+                ? this.logService.error(this.findOriginalError(error))
+                : this.logService.error(error);
 
-        } catch ( loggingError ) {
-            console.group( "ErrorHandler" );
-            console.warn( "Error when trying to log error to", this.logService );
-            console.error( loggingError );
+        } catch (loggingError) {
+            console.group("ErrorHandler");
+            console.warn("Error when trying to log error to logService");
+            console.error(loggingError);
             console.groupEnd();
         }
 
-        if ( this.options.rethrowError ) {
-            throw( error );
+        if (this.options.rethrowError) {
+            throw (error);
         }
     }
-
 
     // ---
     // PRIVATE METHODS.
@@ -90,13 +68,12 @@ export class CustomErrorHandler implements ErrorHandler {
 
 
     // Attempt to find the underlying error in the given Wrapped error.
-    private findOriginalError( error: any ) : any {
-        while ( error && error.originalError ) {
+    private findOriginalError(error: any): any {
+        while (error && error.originalError) {
             error = error.originalError;
         }
-        return( error );
+        return (error);
     }
-
 }
 
 

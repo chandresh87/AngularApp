@@ -5,7 +5,7 @@ import { InMemoryDataService } from '../../../in-memory-data.service';
 
 @Component({
     selector: 'app-child-search',
-    providers: [ChildSearchHandler],
+    /*  providers: [ChildSearchHandler],*/
     templateUrl: './child-search.component.html',
     styleUrls: ['./child-search.component.css']
 })
@@ -45,7 +45,7 @@ export class ChildSearchComponent implements OnInit {
     getHeroes(value) {
         this.childrenService.get()
             .subscribe(
-            children => this.children = children.filter(data => data.birthNumberVal == value));
+            ChildDataCollection => this.children = ChildDataCollection.childArray.filter(data => data.birthNumberVal == value));
     }
     toggleBirthNumber(e) {
         if (e.target.checked) {

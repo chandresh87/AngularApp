@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
 
-import {ConfigService} from './architecture/config/config.service'
+import { ConfigService } from './architecture/config/config.service'
 import { LoggingService } from './architecture/logging/logging.service'
 import { HelpService } from './architecture/help/help.service'
 import { Title } from '@angular/platform-browser';
@@ -14,9 +14,9 @@ import { environment } from './environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnDestroy, OnInit {
   subscription: Subscription;
-
 
   constructor(
     titleService: Title,
@@ -35,8 +35,6 @@ export class AppComponent implements OnDestroy, OnInit {
       }
     });
     logger.log('app component constructed');
-
-    
   }
 
   ngOnDestroy() {
@@ -46,8 +44,8 @@ export class AppComponent implements OnDestroy, OnInit {
   //AppComponent initialization lifecycle hook. Print the current environment value from configuration
   ngOnInit() {
     this.logger.log("environment:" + environment.production);
-   // var baseurl = this.configDataService.getConfig('baseURL');
-   // this.logger.log(baseurl)
+    var baseurl = this.configDataService.getConfig('baseURL');
+    this.logger.log(baseurl)
   }
 
 }

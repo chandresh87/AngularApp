@@ -25,4 +25,11 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  toggleSearch() {
+    const search = document.getElementById('globalSearch');
+    let visible = search.getAttribute('data-visible') == 'false' ? 'true' : 'false';
+    search.setAttribute('data-visible', visible);
+    return false;
+  }
+
 }
