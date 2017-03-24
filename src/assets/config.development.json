@@ -6,5 +6,7 @@
 	"timeout": 100000,
 	"retrycount": 3,
 	"childSearchService": "childSearchData", 
-	"helpServiceURL": "http://www.itmptest.test/"
+	"helpServiceURL": "http://www.itmptest.test/",
+	"newLogUrl": "http://localhost:8080/AngularSpring/rest/logger"
+	
 }

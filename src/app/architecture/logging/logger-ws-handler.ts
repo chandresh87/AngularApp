@@ -37,12 +37,13 @@ export class LoggerWSHandler implements MessageHandler {
     //private configOptions: LOGGER_WS_HANDLER_OPTIONS;
 
     constructor(private http: Http, private configService: ConfigService) {
-        this.url = configService.getConfig('baseURL') + configService.getConfig('loggerURL');
+        //this.url = configService.getConfig('baseURL') + configService.getConfig('loggerURL');  
+		this.url = configService.getConfig('newLogUrl') ;
         this.timeout = configService.getConfig("timeout");
         this.retryCount = configService.getConfig("retrycount");
         this.headers = new Headers({
-            'Content-Type': 'application/json',
-            'Accept': 'q=0.8;application/json;q=0.9'
+            'Content-Type': 'application/json'
+         
         });
         this.requestOptions = new RequestOptions({ headers: this.headers });
     }
