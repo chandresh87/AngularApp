@@ -1,8 +1,8 @@
 
-import {ChbClaimantBirthDetails} from "./ChbClaimintBirthDetails"
-import {ChbClaimantBasicEligibiltyDetails} from "./ChbClaimantBasicEligibilty"
-import {ChbClaimantBasicEligibiltyExtraDetails} from "./ChbChildEligibiltyExtraDetails"
-import {ChbClaimantEducationDetails} from "./ChbChildClamaintEducationDetail"
+import {ChbClaimantBirthDetails} from "./chb-claimant-birth-details"
+import {ChbClaimantBasicEligibiltyDetails} from "./chb-claimant-basic-eligibilty"
+import {ChbClaimantBasicEligibiltyExtraDetails} from "./chb-child-eligibilty-extra-details"
+import {ChbClaimantEducationDetails} from "./chb-child-claimant-education-detail"
 
 
 export class ChbClaimantDetails

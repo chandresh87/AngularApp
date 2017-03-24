@@ -1,38 +1,47 @@
-<div class="hamburger" (click)="toggleSideMenu()" *ngIf="routes">
-  <span id="hamburger-icon" class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-</div>
+<!-- Hamburger Icon -->
+<ng-container *ngIf="routes">
+  <div class="hamburger" (click)="toggleSideMenu()">
+    <span id="hamburger-icon" class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+  </div>
+</ng-container>
 
 <aside id="side-menu" class="side-menu" data-visible="false">
 
-  <ng-container *ngIf="routes">
-    <div class="side-menu__information">
-      <div class="row">
-        <div class="col-xs-4">
-          <app-icon iconClass="glyphicon-user"></app-icon>
-        </div>
-        <div class="col-xs-8">
-          <b>Mr K Bolam</b>
-          <br>
-          <small>20/02/1991</small>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-4"><span class="label label-default"><b>NINO:</b></span></div>
-        <div class="col-xs-8">NL12345D</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-4"><span class="label label-default"><b>Address:</b></span></div>
-        <div class="col-xs-8">12 Merry Lane, Newcastle</div>
-      </div>
-    </div>
-  </ng-container>
+  <!-- User info panel -->
+  <app-user-info></app-user-info>
 
+  <!-- Menu -->
   <ng-container *ngIf="routes">
-    <ul id="side-menu__list" class="side-menu__list">
+    <ul id="side-menu__list" class="side-menu__list panel-group">
       <ng-container *ngFor="let route of routes">
-        <li class="side-menu__list__item" *ngIf="route.path">
-          <a routerLink="/child-benefits/{{ route.path }}" routerLinkActive="active">{{ route.data.title }}</a>
-        </li>
+        <ng-container *ngIf="route.path && route.data.title">
+
+          <!-- Routes without children -->
+          <ng-container *ngIf="!route.children && !route.data.hidden">
+            <li class="side-menu__list__item">
+              <a routerLink="{{ route.path }}" routerLinkActive="active">{{ route.data.title }}</a>
+            </li>
+          </ng-container>
+
+          <!-- Routes with children -->
+          <ng-container *ngIf="route.children">
+            <div id="accordion">
+              <li class="side-menu__list__item">
+                <a href="#{{ route.path }}" class="dropdown" routerLinkActive="active" data-toggle="collapse" data-parent="#accordion">{{ route.data.title }}</a>
+                <ul class="side-menu__sub-menu collapse" id="{{ route.path }}">
+                  <ng-container *ngFor="let child of route.children">
+                    <ng-container *ngIf="child.path && child.data.title && !route.data.hidden">
+                      <li class="side-menu__list__item">
+                        <a routerLink="{{ route.path + '/' + child.path }}" routerLinkActive="active">{{ child.data.title }}</a>
+                      </li>
+                    </ng-container>
+                  </ng-container>
+                </ul>
+              </li>
+            </div>
+          </ng-container>
+
+        </ng-container>
       </ng-container>
     </ul>
   </ng-container>

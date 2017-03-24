@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { ConfigService} from '../../../architecture/config/config.service';
-import { NavigationService } from '../../../architecture/navigation/navigation.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pagenotfound',
@@ -10,13 +8,13 @@ import { NavigationService } from '../../../architecture/navigation/navigation.s
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor(navigationService: NavigationService, private configDataService: ConfigService) {
-    navigationService.setRoutes('');
-  }
+  constructor(private location: Location) {}
 
   ngOnInit() {
-    var baseurl = this.configDataService.getConfig('baseURL');
-    console.log(baseurl)
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

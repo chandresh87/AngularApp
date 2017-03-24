@@ -4,7 +4,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { ConfigService, ConfigInitializer } from './architecture/config/config.service';
+import { ConfigService } from './architecture/config/config.service';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -14,7 +14,6 @@ describe('AppComponent', () => {
         SharedModule
       ],
       providers: [
-        { useFactory: ConfigInitializer, deps: [ConfigService], multi: true },
         ConfigService
       ],
       declarations: [

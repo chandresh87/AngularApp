@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { ChildData } from '../domain/ChildData';
+import { ChildData } from '../domain/child-data';
 import 'rxjs/add/operator/toPromise';
 
 import { Headers, RequestOptions } from '@angular/http';
@@ -16,19 +16,15 @@ import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/retry';
 import { LoggingService } from '../../architecture/logging/logging.service'
 import { RestTemplate } from '../../architecture/message-handler/rest-template'
-import { ChildDataCollection } from '../domain/childDataCollection';
+import { ChildDataCollection } from '../domain/child-data-collection';
 
 @Injectable()
 export class ChildBenefitHistoryService {
-
     url: string
 
     constructor(private logger: LoggingService, public restTemplate: RestTemplate) {
-
-        this.url = '../../assets/data/childHistoryData.json'
+        this.url = '../../assets/data/child-history-data.json'
     }
-
-
 
     getHistory() {
         this.logger.log("get history called");

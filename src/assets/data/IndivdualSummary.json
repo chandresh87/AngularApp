@@ -1,0 +1,23 @@
+{
+    "nameDetails": {
+        "title": "MR",
+        "surname": "SNOWDEN",
+        "forename": "BERNARD",
+        "otherForename": "JAMES"
+    },
+    "additionalDetails": {
+        "nino": "AB123456C",
+        "marriageStatus": "NOT KNOWN",
+        "gender": "M",
+        "dateOfBirth": "19/03/1947",
+        "dateOfDeath": ""
+    },
+    "address": {
+        "line1": "56 NESTON RD",
+        "line2": "THRONTON HOUGH",
+        "line3": "WIRRAL",
+        "line4": "MERSEYSIDE",
+        "postcode": "CH63 1JF",
+        "county": "ENGLAND"
+    }
+}

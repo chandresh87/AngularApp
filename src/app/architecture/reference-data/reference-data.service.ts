@@ -1,11 +1,12 @@
 /* * * ../../../architecture/reference-datas/reference-data.service.ts * * */
+
 /**
  * 
- * ReferenceDataService is the service class that calls the ReferenceDataWSHandler
- * for fetching the RefData
- * This service can be injected to the view component which needs 
- * the refData
- * 
+ * ReferenceDataService is the service class that calls the RestTemplate
+ * for fetching the Reference Data
+ * This service can be injected to each view component which needs 
+ * the Reference Data.
+ * @class ReferenceDataService
  */
 
 //imports
@@ -29,34 +30,37 @@ import { NotificationQueue } from '../../architecture/exception-handler/notifica
 export class ReferenceDataService {
 
   constructor(private notificationQueue: NotificationQueue,
-    private logger: LoggingService,
-    public configService: ConfigService,
-    public restTemplate: RestTemplate) {
-
-
-    this.loadRefData().subscribe((data: ReferenceDataGroup) => {
-      REFDATACACHE.referenceData = data
-    }, err => {
-      this.logger.log(err)
-      this.notificationQueue.notify(err);
-    });
+              private logger: LoggingService,
+              public configService: ConfigService,
+              public restTemplate: RestTemplate) {
+    this.loadRefData().subscribe(
+      (data: ReferenceDataGroup) => {
+          REFDATACACHE.referenceData = data
+      }, 
+      err => {
+        this.logger.log(err)
+          this.notificationQueue.notify(err);
+      });
   }
 
   /**
-    * The method that loads reference data elements on application startup
+   * To load reference data on application startup. Returns an observable for the HTTP GET for the whole of the ReferenceData.
+   * The URL for the Reference data is read from config.
+   * @return {Observable}
    */
   public loadRefData() {
-    this.logger.log("Entering loadRefData method");
+    this.logger.log("Entering ReferenceDataService.loadRefData method");
     let url = this.configService.getConfig('baseURL') + this.configService.getConfig('referenceDataService');
     return this.restTemplate.getForObject(url, ReferenceDataGroup);
   }
 
   /**
-   * Returns ReferenceData[] observable for the given ReferenceDataType
-   * @param typeValue - represnets requested ReferenceDataType
+   * Returns an Observable over an array of values matching typeValue.
+   * @param {String} typeValue is the name of the reference data type. See {ReferenceDataType}
+   * @return {Observable<ReferenceData[]>}
    */
   getRefData(typeValue): Observable<ReferenceData[]> {
-    this.logger.log("Enetering getRefData method");
+    this.logger.log("Entering ReferenceDataService.getRefData method");
     let _retArray: ReferenceData[] = []
     let cache = this
 
@@ -70,29 +74,31 @@ export class ReferenceDataService {
       else {
         //Run the  loadRefData() and on completion search and update the result
         cache.loadRefData().subscribe((data: ReferenceDataGroup) => {
-          REFDATACACHE.referenceData = data
-          _retArray = cache.getRefDataFromCache(typeValue)
-          _retArray.length > 0 ? observer.next(_retArray) : observer.error(new Exception(1000, typeValue + " type reference data Not Found"))
-        }, err => {
-          cache.logger.log(err)
-          cache.notificationQueue.notify(err)
-          observer.error(new Exception(1000, typeValue + " type reference data Not Found"))
-        })
+            REFDATACACHE.referenceData = data
+            _retArray = cache.getRefDataFromCache(typeValue)
+            _retArray.length > 0 ? observer.next(_retArray) : observer.error(new Exception(1000, typeValue + " type reference data not found"))
+          }, 
+          err => {
+            cache.logger.log("Error after calling ReferenceDataService.loadRefData" + err)
+            cache.notificationQueue.notify(err)
+            observer.error(new Exception(1000, typeValue + " type reference data not found"))
+          })
       }
     });
 
     return observable;
   }
 
-  /*  Get call to fetch RefData from REFDATACACHE
-  *
+  /**  Get call to fetch RefData from REFDATACACHE
+  * @method getRefDataFromCache
+  * @param {String} typeValue the name of the reference data type of interest
+  * @return {ReferenceData[]} An array, one entry for each value of type typeValue
   */
   private getRefDataFromCache(typeValue): ReferenceData[] {
-    this.logger.log("Retreiveing reference data for the type : " + typeValue);
+    this.logger.log("Retrieving reference data for type: " + typeValue);
     let _retArray: ReferenceData[] = [];
     var _refData: ReferenceData[] = REFDATACACHE.referenceData.data;
     if (_refData != undefined) {
-
       _refData.forEach(function (element, index, array) {
         var refData = element;
         if (refData.type == typeValue) {
@@ -101,9 +107,8 @@ export class ReferenceDataService {
       });
     }
     else {
-      this.logger.log("Reference data is undefined");
+      this.logger.log("REFDATACACHE.referenceData.data is undefined");
     }
-
     return _retArray
   }
 

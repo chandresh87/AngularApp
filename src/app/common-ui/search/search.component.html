@@ -1,18 +1,17 @@
-<form id="globalSearch" class="search" data-visible="false">
+<form [formGroup]="validationForm" (ngSubmit)="save(validationForm)" id="globalSearch" class="search" data-visible="false">
   <div class="input-group input-group-lg">
     <span class="input-group-btn">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ type }} <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu" (click)="setType($event.target)">
       <li class="dropdown-header"><b>SEARCH BY:</b></li>
       <li class="active"><a href="#" data-placeholder="Search... (AB123456C)">NINO</a></li>
-      <li><a href="#" data-placeholder="CHB">CHB</a></li>
-      <li><a href="#" data-placeholder="EMPREF">EMPREF</a></li>
-      <li><a href="#" data-placeholder="TRN">TRN</a></li>
+      <li class="disabled"><a href="#" data-placeholder="EMPREF">EMPREF</a></li>
+      <li class="disabled"><a href="#" data-placeholder="TRN">TRN</a></li>
     </ul>
     </span>
-    <input type="text" class="form-control" placeholder="{{ placeholder }}">
+    <input type="text" name="nino" formControlName="nino" class="form-control" placeholder="{{ placeholder }}" required>
     <span class="input-group-btn">
-      <button type="button" class="btn btn-default">
+      <button type="submit" class="btn btn-default" [disabled]="!validationForm.valid">
         <app-icon iconClass="glyphicon-search"></app-icon>
       </button>
     </span>

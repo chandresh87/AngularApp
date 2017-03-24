@@ -1,0 +1,11 @@
+.side-menu__information {
+    background-color: black !important;
+}
+
+#overlay {
+    background-color: rgba(27,36,50,.5) !important;
+}
+
+#modal {
+    background-color: black !important;
+}

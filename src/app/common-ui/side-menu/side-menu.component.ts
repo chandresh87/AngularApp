@@ -1,33 +1,34 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, OnDestroy, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Http } from '@angular/http';
 import { NavigationService } from '../../architecture/navigation/navigation.service';
-import { Subscription }   from 'rxjs/Subscription';
+import { IndividualSummaryComponent } from '../../individual-summary/individual-summary.component';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.css']
+  styleUrls: ['./side-menu.component.css'],
+  host: {
+    '(window:resize)': 'onResize($event)'
+  }
 })
 export class SideMenuComponent implements OnInit, OnDestroy {
   private routes: any;
-  subscription: Subscription;
+  private subscription: Subscription;
 
   constructor(
     private _eref: ElementRef,
     private router: Router,
     private route: ActivatedRoute,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
   ) {
     this.subscribeToRoutes();
   }
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd) {
-        this.displayRequiredComponents();
-      }
-    });
+    this.displayRequiredComponents();
   }
 
   subscribeToRoutes() {
@@ -36,7 +37,6 @@ export class SideMenuComponent implements OnInit, OnDestroy {
         this.routes = routes;
       }
     );
-
   }
 
   toggleSideMenu() {
@@ -49,65 +49,52 @@ export class SideMenuComponent implements OnInit, OnDestroy {
 
   hideMenu() {
     let sideMenu = document.getElementById('side-menu');
-        sideMenu.setAttribute('data-visible', 'false');
+    sideMenu.setAttribute('data-visible', 'false');
   }
 
   showMenu() {
     let sideMenu = document.getElementById('side-menu');
-        sideMenu.setAttribute('data-visible', 'true');
+    sideMenu.setAttribute('data-visible', 'true');
   }
 
   mainMenu() {
     let main = document.getElementsByTagName('main')[0];
-        main.classList.remove('no-menu');
+    main.classList.remove('no-menu');
   }
 
   mainNoMenu() {
     let main = document.getElementsByTagName('main')[0];
-        main.classList.add('no-menu');
-  }
-
-  addDashboardLogo() {
-   let logo = document.getElementById('logo');
-   logo.classList.add('logo--dashboard');
-  }
-
-  removeDashboardLogo() {
-   let logo = document.getElementById('logo');
-   logo.classList.remove('logo--dashboard');
-  }
-
-  hideBreadcrumbs() {
-    let breadcrumbs = document.getElementsByClassName('breadcrumb-container')[0];
-    breadcrumbs.classList.add('breadcrumb-container--hidden');
-  }
-
-  showBreadcrumbs() {
-    let breadcrumbs = document.getElementsByClassName('breadcrumb-container')[0];
-    breadcrumbs.classList.remove('breadcrumb-container--hidden');
+    main.classList.add('no-menu');
   }
 
   displayRequiredComponents() {
-   
-   // Page Width
-    let width = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth;
 
-    if (this.routes && width < 992) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+
+        // Page Width
+        let width = window.innerWidth
+          || document.documentElement.clientWidth
+          || document.body.clientWidth;
+
+        let sideMenu = document.getElementById('side-menu');
+
+        if (sideMenu) {
+          if (width < 992) {
+            this.hideMenu();
+            this.mainNoMenu();
+          } else {
+            this.showMenu();
+            this.mainMenu();
+          }
+        }
+      }
+    });
+  }
+
+  onResize(event) {
+    if (event.target.innerWidth < 992) {
       this.hideMenu();
-      this.removeDashboardLogo();
-      this.showBreadcrumbs();
-      this.mainMenu();
-    } else if (this.routes) {
-      this.showMenu();
-      this.removeDashboardLogo();
-      this.showBreadcrumbs();
-      this.mainMenu();
-    } else {
-      this.hideMenu();
-      this.addDashboardLogo();
-      this.hideBreadcrumbs();
       this.mainNoMenu();
     }
   }

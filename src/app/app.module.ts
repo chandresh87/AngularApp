@@ -7,7 +7,9 @@ import { Http } from '@angular/http';
 import { ArchitectureModule } from './architecture/architecture.module';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+import { ItmpBrowserModule } from './itmp-browser/itmp-browser.module';
 import { ChildBenefitsModule } from './child-benefits/child-benefits.module';
+import { IndividualSummaryModule } from './individual-summary/individual-summary.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -17,13 +19,14 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     ArchitectureModule,
     SharedModule,
     BrowserModule,
-    AppRoutingModule,
+    ItmpBrowserModule,
     ChildBenefitsModule,
+    IndividualSummaryModule,
   ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }

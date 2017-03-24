@@ -15,7 +15,7 @@ main {
 
 @media only screen and (max-width: 992px) {
   main {
-    width: auto;
+    width: 100%;
   }
 }
 
@@ -27,27 +27,24 @@ main {
 
 /* Content */
 
-.content {
-  background-color: #fff;
-  margin: 0 0 0 20px;
+.dashboard-content {
   padding: 30px;
   min-height: calc(100vh - 170px);
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-  border-radius: 1px;
-  max-width: 1000px;
 }
 
-.no-menu-container {
-  margin-top: -30px;
+.content {
   background-color: #fff;
+  margin: 0 20px 0 20px;
   padding: 30px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-  border-radius: 1px;
-  max-width: 1000px;
+  min-height: calc(100vh - 170px);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 
+              0 1px 5px 0 rgba(0,0,0,0.12), 
+              0 3px 1px -2px rgba(0,0,0,0.2);
+  max-width: 1400px;
 }
 
 @media only screen and (max-width: 992px) {
-  .content, .no-menu-container {
+  .content {
     width: calc(100vw - 40px);
   }
 }
@@ -55,10 +52,6 @@ main {
 @media only screen and (max-width : 768px) {
   .content {
     margin: 0 !important;
-    width: 100%;
-  }
-
-  .no-menu-container {
     width: 100%;
   }
 }
@@ -93,54 +86,25 @@ main {
   background-color: #777 !important;
 }
 
-/* Ng2-breadcrumb component */
-
-.breadcrumb {
-  background-color: transparent !important;
+.no-menu {
+  max-width: none;
+  display: block !important;
 }
 
-.breadcrumb-container {
-  margin-top: 70px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #018983;
-  border-bottom: 1px solid #047d77;
-  height: 50px;
-}
-
-.breadcrumb-container ul {
-  margin: 0; 
-  padding: 0;
-  text-transform: capitalize;
-}
-
-.breadcrumb-container ul li {
-  padding-right: 10px;
-}
-
-.breadcrumb-container ul li a {
-  text-decoration: underline;
-  color: white;
-}
-
-.breadcrumb-container ul li.active span {
-  color: white;
-}
-
-.breadcrumb-container--hidden {
-  display: none;
-}
-
-.breadcrumb-container--hidden ~ main {
+.main-dashboard {
   width: 100% !important;
   max-width: none;
   display: block !important;
-  margin-top: 70px;
+  margin-top: 70px !important;
 }
 
-.breadcrumb-container--hidden ~ main .content {
+.no-menu .content {
+  min-height: calc(100vh - 170px);
+  display: block;
+  margin: 0 auto;
+}
+
+.main-dashboard {
   box-shadow: none;
   min-height: calc(100vh - 120px);
   background-color: #eee;
@@ -148,15 +112,19 @@ main {
   margin: 0 auto;
 }
 
-.breadcrumb-container--hidden ~ .no-menu {
-    left: auto;
+.no-routes {
+  float: none;
+  margin: 0 auto;
+}
+
+.no-routes .content {
+  margin: 0;
 }
 
 .side-menu__information .glyphicon-user {
   font-size: 30px;
   line-height: 1;
   top: 5px !important;
-  color: #777;
 }
 
 #overlay {
@@ -215,4 +183,42 @@ main {
   top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Ng2-breadcrumb component */
+
+.breadcrumb {
+  background-color: transparent !important;
+}
+
+.breadcrumb-container {
+  overflow: hidden;
+  margin-top: 70px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #018983;
+  border-bottom: 1px solid #047d77;
+  height: 50px;
+}
+
+.breadcrumb-container ul {
+  margin: 0; 
+  padding: 0;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.breadcrumb-container ul li {
+  padding-right: 10px;
+}
+
+.breadcrumb-container ul li a {
+  text-decoration: underline;
+  color: white;
+}
+
+.breadcrumb-container ul li.active span {
+  color: white;
 }

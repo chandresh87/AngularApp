@@ -9,12 +9,14 @@ import { NotificationService } from './exception-handler/notification.service';
 import { LoggingService } from './logging/logging.service';
 import { HelpService } from './help/help.service';
 import { NavigationService } from './navigation/navigation.service';
+import { PreferencesService } from './preferences/preferences.service';
+import { ValidationService } from './validation/validation.service';
 
 import { LoggerWSHandler } from './logging/logger-ws-handler';
 
 /* import { LOGGER_WS_HANDLER_PROVIDER } from './logging/logger-ws-handler';*/
 import { ERROR_HANDLER_PROVIDERS } from "./error-handler/custom-error-handler";
-import { ERROR_HANDLER_OPTIONS } from "./error-handler/custom-error-handler";
+// import { ERROR_HANDLER_OPTIONS } from "./error-handler/error-handler-options";
 
 import { ReferenceDataService } from './reference-data/reference-data.service';
 
@@ -28,9 +30,8 @@ import { CustomErrorHandler } from './error-handler/custom-error-handler';
 
 //import { NotificationService } from './exception-handler/notification.service';
 import { NotificationQueue } from '../architecture/exception-handler/notification.queue.service';
-import {ExceptionService} from '../architecture/exception-handler/exception.service';
+import { ExceptionService } from '../architecture/exception-handler/exception.service';
 import { RestTemplate } from './message-handler/rest-template';
-
 
 @NgModule({
   imports: [
@@ -53,9 +54,11 @@ import { RestTemplate } from './message-handler/rest-template';
     HelpService,
     NotificationService,
     ExceptionService,
-   // NotificationService,
+    // NotificationService,
     NotificationQueue,
     ReferenceDataService,
+    PreferencesService,
+    ValidationService,
     CustomErrorHandler,
     RestTemplate,
     ERROR_HANDLER_PROVIDERS,
@@ -69,4 +72,17 @@ import { RestTemplate } from './message-handler/rest-template';
   ]
 })
 export class ArchitectureModule {
+  constructor(
+    private preferences: PreferencesService,
+    private breadcrumbService: BreadcrumbService
+  ) {
+
+    // Hide dashboard link from breadcrumbs
+    this.breadcrumbService.hideRoute('/dashboard');
+
+    // Set users preferred theme if not set to standard
+    let theme = this.preferences.getTheme();
+    (theme !== 'standard') ? this.preferences.setTheme(theme) : false;
+
+  }
 }

@@ -28,7 +28,9 @@ export class HeaderComponent implements OnInit {
   toggleSearch() {
     const search = document.getElementById('globalSearch');
     let visible = search.getAttribute('data-visible') == 'false' ? 'true' : 'false';
+    let input = search.getElementsByTagName('input')[0];
     search.setAttribute('data-visible', visible);
+    input.focus();
     return false;
   }
 

@@ -73,10 +73,14 @@ export class LoggingService extends Logger {
       && (console && console.groupEnd) && console.groupEnd();
   }
 
+/**
+ * This method posts the log message 
+ * @param args 
+ */
   subscribe(...args: any[]) {
     this.webservice.post(...args).subscribe(
       () => { },
-      error => { console.log(error) }
+      error => { console.log("error after POSTing a log message to the server:" + error) }
     );
   }
 

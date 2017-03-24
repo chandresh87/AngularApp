@@ -1,0 +1,125 @@
+<app-heading text="Individual Summary: Mr B Snowden"></app-heading>
+
+<form [formGroup]="validationForm" (ngSubmit)="onSubmit()">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1"><span  class="label">  <b>
+        Name Details</b></span></a>
+        </h6>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="form-group row">
+            <label for="title" class="col-md-3">Title</label>
+            <div class="col-md-3">
+              <input type="text" class="form-control" formControlName="title" placeholder="Title" id="title">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="surname" class="col-md-3">Surname</label>
+            <div class="col-md-3">
+              <input type="text" class="form-control" formControlName="surname" placeholder="surname" id="surname" value="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="forename" class="col-md-3">Forename</label>
+            <div class="col-md-3">
+              <input type="text" class="form-control" formControlName="forename" placeholder="forename" id="forename">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="otherforenames" class="col-md-3">Other Forenames</label>
+            <div class="col-md-3">
+              <input type="text" class="form-control" formControlName="otherForename" placeholder="otherForename" id="otherforename">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse2"><span  class="label"><b>
+       Correspondence Address</b></span></a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="form-group row">
+            <label for="line1" class="col-md-3">Line 1</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" formControlName="line1" placeholder="Line 1" id="line1">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="line2" class="col-md-3">Line 2</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" formControlName="line2" placeholder="Line 2" id="line2">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="line3" class="col-md-3">Line3</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" formControlName="line3" placeholder="Line 3" id="line3">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="line4" class="col-md-3">Line 4</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" formControlName="line4" placeholder="Line 4" id="line4">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="postcode" class="col-md-3">Postcode</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" formControlName="postcode" placeholder="postcode" id="postcode">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="country" class="col-md-3">Country</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" formControlName="country" placeholder="country" id="country">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse3"><span  class="label">   <b>
+       Additional Details</b></span></a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="form-group row">
+            <label for="status" class="col-md-3">Marriage/CP Status</label>
+            <div class="col-md-3">
+              <input type="text" class="form-control" formControlName="marriageStatus" placeholder="marriageStatus" id="status">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="gender" class="col-md-3">Gender</label>
+            <div class="col-md-1">
+              <input type="text" class="form-control" formControlName="gender" placeholder="Gender" id="gender">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="dob" class="col-md-3">Date of birth</label>
+            <div class="col-md-2">
+              <input type="text" class="form-control" formControlName="dateOfBirth" placeholder="Date of birth" id="dob">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="dod" class="col-md-3">Date of death</label>
+            <div class="col-md-2">
+              <input type="text" class="form-control" formControlName="dateOfDeath" placeholder="Date of death" id="dod">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</form>

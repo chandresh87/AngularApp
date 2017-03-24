@@ -1,0 +1,28 @@
+{  
+   "data":[  
+      {  
+         "birthNumberVal":"1234",
+         "nino":"AB123456",
+         "surName":"John",
+         "firstName":"Joana",
+         "otherName":"Joshu",
+         "dateOfBirth":"01/02/1978"
+      },
+      {  
+         "birthNumberVal":"4567",
+         "nino":"AN45678",
+         "surName":"Mathew",
+         "firstName":"Sandra",
+         "otherName":"Joshu",
+         "dateOfBirth":"23/04/2001"
+      },
+      {  
+         "birthNumberVal":"8901",
+         "nino":"DE123456",
+         "surName":"Luke",
+         "firstName":"Anna",
+         "otherName":"Mary",
+         "dateOfBirth":"12/12/2005"
+      }
+   ]
+}

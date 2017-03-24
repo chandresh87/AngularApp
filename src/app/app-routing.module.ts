@@ -5,14 +5,19 @@ import { DashboardComponent } from './itmp-browser/components/dashboard/dashboar
 import { PageNotFoundComponent } from './itmp-browser/components/page-not-found/page-not-found.component';
 import { PreferencesComponent } from './itmp-browser/components/preferences/preferences.component';
 
-const routes: Routes = [
+export const routes: Routes = [
 
-  // Dashboard
+  // Dashboard & Page Not Found
   { path: '',   redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+  { path: '404', component: PageNotFoundComponent, data: { title: 'Page Not Found', hidden: true } },
 
   // Preferences
-  { path: 'preferences', component: PreferencesComponent, data: { title: 'Preferences' } },
+  { 
+    path: 'preferences',
+    component: PreferencesComponent,
+    data: { title: 'Preferences', hidden: true }
+  },
 
   // Child Benefits
   { 
@@ -21,8 +26,16 @@ const routes: Routes = [
     data: { title: 'Child Benefits', preload: true }
   },
 
+
+  // Individual Summary
+  {
+  path: ':nino',
+    loadChildren: './individual-summary/individual-summary.module#IndividualSummaryModule',
+    data: { title: '', preload: true }
+  },
+
   // 404
-  { path: '**', component: PageNotFoundComponent, data: { title: 'Page Not Found' } },
+  { path: '**', component: PageNotFoundComponent, data: { title: 'Page Not Found', hidden: true } },
  
 ];
 

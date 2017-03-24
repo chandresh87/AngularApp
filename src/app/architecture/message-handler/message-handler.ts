@@ -1,10 +1,10 @@
 /* * * ../../../architecture/message-handler/message-handler * * */
 /**
- * 
- * MessageHandler is the interface that defines the APIs 
- * to efficiently interact with the webservices
- * 
- **/
+ * MessageHandler is an interface that defines the APIs 
+ * to efficiently interact with the webservices provided by
+ * the server.
+ * @class MessageHandler
+ */
 import { Observable } from 'rxjs/Observable';
 
 export interface MessageHandler {

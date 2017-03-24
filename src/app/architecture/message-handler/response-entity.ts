@@ -1,4 +1,10 @@
-/* This class is used to hold the reponse message body and response header from the HTTP call */
+/**
+ * This class is used to hold the reponse message body and response header from the HTTP call.
+ * This is plain old data and consists of the header and body of an HTTP message. The body will
+ * usually be held as a javascript object, not as an ASCII string.
+ * See RestTemplate.setResponseEntity
+ * @class ResponseEntity
+ */
 export class ResponseEntity {
 
     /* Response Body*/

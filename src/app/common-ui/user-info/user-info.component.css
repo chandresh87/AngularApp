@@ -1,0 +1,22 @@
+.side-menu__information {
+  background-color: white;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+@media only screen and (max-width: 992px) {
+  .side-menu__information {
+    box-shadow: 0;
+    background-color: #121312;
+    border-bottom: none;
+    color: white;
+  }
+}
+
+.side-menu__information > div {
+  margin-bottom: 10px;
+}
+
+.side-menu__information > div:last-of-type {
+  margin-bottom: 0;
+}

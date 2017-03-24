@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BuildFormHelper } from '../../../architecture/validation/BuildFormHelper';
 import { ChildComplexEligibilityValidation } from './ChildComplexEligibilityValidator';
 import { FormBuilder } from '@angular/forms';
-import { ChildComplexEligibilty } from '../../../child-benefits/domain/ChildComplexEligibilty'
+import { ChildComplexEligibilty } from '../../../child-benefits/domain/child-complex-eligibilty'
 import { ChildComplexEligibilityService } from './ChildComplexEligibilityService';
 import { ResponseMessage } from '../../../architecture/message-handler/response-message'
 import { ResponseEntity } from '../../../architecture/message-handler/response-entity'

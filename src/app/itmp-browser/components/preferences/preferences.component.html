@@ -1,24 +1,31 @@
-<div class="no-menu-container">
+<app-breadcrumb></app-breadcrumb>
 
-  <app-heading text="Preferences"></app-heading>
-  <app-subheading text="Manage your system preferences"></app-subheading>
+<main id="main" class="no-routes">
+  <div class="content">
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
+    <app-heading text="Preferences"></app-heading>
+    <app-subheading text="Manage your system preferences"></app-subheading>
 
-      <form id="preferences">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
 
-        <div class="form-group">
-          <label for="theme" class="control-label">Theme Switcher:</label>
-          <select name="theme" class="form-control" (change)="setTheme($event.target)">
-            <option value="standard">Standard</option>
-            <option value="high-contrast">High Contrast</option>
+        <form id="preferences">
+
+          <div class="form-group">
+            <label for="theme" class="control-label">Theme Switcher:</label>
+            <select name="theme" class="form-control" (change)="this.preferences.setTheme($event.target.value)">
+            <option value="" [selected]="this.preferences.getTheme() === 'standard'">Standard</option>
+            <option value="high-contrast" [selected]="this.preferences.getTheme() === 'high-contrast'">High Contrast</option>
+            <option value="primeng-bootstrap" [selected]="this.preferences.getTheme() === 'primeng-bootstrap'">PrimgNG Bootstrap</option>
+            <option value="primeng-cupertino" [selected]="this.preferences.getTheme() === 'primeng-cupertino'">PrimgNG Cupertino</option>
+            <option value="primeng-darkhive" [selected]="this.preferences.getTheme() === 'primeng-darkhive'">PrimgNG Darkhive</option>
           </select>
-        </div>
+          </div>
 
-      </form>
+        </form>
 
+      </div>
     </div>
-  </div>
 
-</div>
+  </div>
+</main>

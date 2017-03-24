@@ -1,9 +1,18 @@
-<div class="page-not-found">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>404 Page Not Found&hellip;</h1>
-      <br>
-      <p><a [routerLink]="['/dashboard']" class="btn btn-default btn-lg">Return to Dashboard</a><p>
+<main id="main" class="main-dashboard">
+  <div class="dashboard-content">
+
+    <div class="page-not-found">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>404 Page Not Found&hellip;</h1>
+          <br>
+          <div class="btn-group btn-group-lg" role="group">
+            <button class="btn btn-default btn-lg" (click)="back()">Go Back</button>
+            <a [routerLink]="['/dashboard']" class="btn btn-default btn-lg">Return to Dashboard</a>
+          </div>
+      </div>
     </div>
   </div>
-</div>
+
+  </div>
+</main>

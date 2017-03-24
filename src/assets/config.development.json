@@ -1,8 +1,10 @@
 {
 	"baseURL": "http://demo9396170.mockable.io/",
+	"baseURL_1": "http://demo0015295.mockable.io/",
 	"loggerURL": "log",
 	"referenceDataService": "referenceData",
 	"timeout": 100000,
 	"retrycount": 3,
+	"childSearchService": "childSearchData", 
 	"helpServiceURL": "http://www.itmptest.test/"
 }

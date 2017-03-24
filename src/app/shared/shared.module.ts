@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // Custom Modules
-import { CommonUiModule } from '../common-ui/common-ui.module';
 import { ItmpBrowserModule } from '../itmp-browser/itmp-browser.module';
+import { CommonUiModule } from '../common-ui/common-ui.module';
 
 // Vendor Modules
 import { Ng2BreadcrumbModule } from 'ng2-breadcrumb/ng2-breadcrumb';
@@ -25,8 +25,8 @@ import { OrderListModule, DataTableModule, TooltipModule } from 'primeng/primeng
     HttpModule,
 
     // Custom Modules
-    CommonUiModule,
     ItmpBrowserModule,
+    CommonUiModule,
 
     // Vendor Modules
     Ng2BreadcrumbModule,

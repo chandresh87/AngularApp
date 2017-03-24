@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import {ConfigService} from '../config/config.service'
+import { ConfigService } from '../config/config.service'
 
 @Injectable()
 export class HelpService {

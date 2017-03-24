@@ -3,12 +3,12 @@
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { LoggingService } from '../../../architecture/logging/logging.service';
 import { ConfigService } from '../../../architecture/config/config.service';
-import { ChildComplexEligibilty } from '../../../child-benefits/domain/ChildComplexEligibilty'
+import { ChildComplexEligibilty } from '../../../child-benefits/domain/child-complex-eligibilty'
 import { SerializationHelper } from '../../../architecture/serialization/SerializationHelper';
 import { Injectable } from '@angular/core';
 import { RestTemplate } from '../../../architecture/message-handler/rest-template'
 
-import { ChbClaimantDetails } from '../chb-claimant-child-details/model/ClaimaintChildDetails'
+import { ChbClaimantDetails } from '../chb-claimant-child-details/model/claimant-child-details'
 import { ResponseMessage } from '../../../architecture/message-handler/response-message'
 
 @Injectable()

@@ -8,6 +8,7 @@ import { Children } from '../../domain/children';
 import { ReferenceData } from '../../../architecture/reference-data/reference-data';
 import { ReferenceDataType } from '../../../architecture/reference-data/reference-data.enum';
 import { ConfigService } from '../../../architecture/config/config.service';
+
 import { Exception } from '../../../architecture/exception-handler/exception'
 import { NotificationService } from '../../../architecture/exception-handler/notification.service';
 import { ExceptionService } from '../../../architecture/exception-handler/exception.service';
@@ -38,7 +39,7 @@ export class ChildClaimantPartnerComponent implements OnInit {
   constructor(
     private referenceDataService: ReferenceDataService,
     private configService: ConfigService,
-  private exceptionService:ExceptionService
+    private exceptionService:ExceptionService
   ) {
     this.pageTitle = 'Child Benefits-Claimant Partner Details';
   }

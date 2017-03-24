@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
-
 import { ConfigService } from './architecture/config/config.service'
 import { LoggingService } from './architecture/logging/logging.service'
 import { HelpService } from './architecture/help/help.service'
@@ -16,18 +14,15 @@ import { environment } from './environment';
 })
 
 export class AppComponent implements OnDestroy, OnInit {
-  subscription: Subscription;
 
   constructor(
-    titleService: Title,
     router: Router,
     activatedRoute: ActivatedRoute,
-    private breadcrumbService: BreadcrumbService,
+    titleService: Title,
     private logger: LoggingService,
     private help: HelpService,
     private configDataService: ConfigService
-  ) {
-    breadcrumbService.hideRoute('/dashboard');
+  ) {    
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         var title = this.help.getTitle(router.routerState, router.routerState.root).join(' - ');
@@ -37,13 +32,11 @@ export class AppComponent implements OnDestroy, OnInit {
     logger.log('app component constructed');
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  ngOnDestroy() {} 
 
-  //AppComponent initialization lifecycle hook. Print the current environment value from configuration
+  // Print the current environment value from configuration
   ngOnInit() {
-    this.logger.log("environment:" + environment.production);
+    this.logger.log("production environment:" + environment.production);
     var baseurl = this.configDataService.getConfig('baseURL');
     this.logger.log(baseurl)
   }

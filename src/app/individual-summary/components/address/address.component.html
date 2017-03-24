@@ -1,0 +1,22 @@
+<app-heading text="Address"></app-heading>
+
+<!-- Data -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      <a data-toggle="collapse" href="#collapse1"><span  class="label">  <b>
+        Address Details</b></span></a>
+    </h6>
+  </div>
+  <p-dataTable [paginator]="true" rows="5" [responsive]="true">
+    <p-column field="type" header="Type"></p-column>
+    <p-column field="address" [style]="{'width':'250px'}" header="Address"></p-column>
+    <p-column field="postcode" header="Postcode"></p-column>
+    <p-column field="startDate" header="StartDate"></p-column>
+    <p-column styleClass="col-button" [style]="{'width':'38px'}">
+      <template pTemplate type="body">
+        <input type="checkbox" />
+      </template>
+    </p-column>
+  </p-dataTable>
+</div>

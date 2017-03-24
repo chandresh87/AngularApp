@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ChildBenefitsRoutingModule } from './child-benefits-routing.module';
@@ -13,11 +14,13 @@ import { ChbClaimantChildDetailsComponent } from './components/chb-claimant-chil
 import { ChildComplexEligibilityService } from './components/child-complex-eligibility/ChildComplexEligibilityService';
 import { ChildComplexEligibilityComponent } from './components/child-complex-eligibility/child-complex-eligibility.component';
 import { ChildSearchHandler } from './services/child-search-handler.service';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   imports: [
     SharedModule,
     CommonModule,
+    FormsModule,
     ChildBenefitsRoutingModule
   ],
   providers: [
@@ -32,7 +35,8 @@ import { ChildSearchHandler } from './services/child-search-handler.service';
     ChildHistoryComponent,
     ChildClaimantPartnerComponent,
     ChbClaimantChildDetailsComponent,
-    ChildComplexEligibilityComponent
+    ChildComplexEligibilityComponent,
+    HomeComponent
   ]
 })
 export class ChildBenefitsModule {

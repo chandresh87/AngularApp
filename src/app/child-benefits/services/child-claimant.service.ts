@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import {Http, Response} from '@angular/http';
-import {Country} from '../components/chb-claimant-child-details/model/Country'
-import { ChbClaimantDetails } from '../components/chb-claimant-child-details/model/ClaimaintChildDetails';
+import {Country} from '../components/chb-claimant-child-details/model/country'
+import { ChbClaimantDetails } from '../components/chb-claimant-child-details/model/claimant-child-details';
 
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';

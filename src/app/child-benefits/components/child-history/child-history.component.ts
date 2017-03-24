@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChildData } from '../../domain/ChildData';
-import { ChildDataCollection } from '../../domain/childDataCollection';
+import { ChildData } from '../../domain/child-data';
+import { ChildDataCollection } from '../../domain/child-data-collection';
 import { ChildBenefitHistoryService } from '../../services/child-benefit-history.service';
 import { LoggingService } from '../../../architecture/logging/logging.service';
 

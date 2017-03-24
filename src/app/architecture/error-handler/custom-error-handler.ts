@@ -6,17 +6,7 @@ import { Injectable } from "@angular/core";
 
 // Import the application components and services.
 import { LoggingService } from "../logging/logging.service";
-
-export interface ErrorHandlerOptions {
-    rethrowError: boolean;
-    unwrapError: boolean;
-}
-
-export var ERROR_HANDLER_OPTIONS: ErrorHandlerOptions = {
-    rethrowError: false,
-    unwrapError: false
-};
-
+import {ErrorHandlerOptions, ERROR_HANDLER_OPTIONS} from './error-handler-options'
 
 @Injectable()
 export class CustomErrorHandler implements ErrorHandler {

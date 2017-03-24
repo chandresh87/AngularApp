@@ -1,0 +1,37 @@
+{
+  "use": ["postcss-high-contrast"],
+  "input": ["high-contrast/all.css"],
+  "output": "src/assets/themes/high-contrast.css",
+  "local-plugins": true,
+  "postcss-high-contrast": {
+  		"aggressiveHC": true,
+        "aggressiveHCDefaultSelectorList": ["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "th", "td"],
+        "aggressiveHCCustomSelectorList": ["div", "span"],
+
+        "backgroundColor": "#000 !important",
+        "altBgColor": "#fff",
+
+        "textColor": "#ffff00 !important",
+
+        "buttonSelector": ["button"],
+        "buttonColor": "#000",
+        "buttonBackgroundColor": "#fcff3c",
+        "buttonBorderColor": "none",
+
+        "linkColor": "#fcff3c",
+        "linkHoverColor": "#fcff3c",
+
+        "borderColor": "#fff",
+        "disableShadow": true,
+
+        "imageFilter": "invert(0)",
+        "imageSelectors": ["img"],
+
+        "removeCSSProps": false,
+        "CSSPropsWhiteList": [
+          "background", "background-color", "color", "border", "border-top", "border-bottom",
+          "border-left", "border-right", "border-color", "border-top-color", "border-right-color",
+          "border-bottom-color", "border-left-color", "box-shadow", "filter", "text-shadow"
+       ]
+  }
+}

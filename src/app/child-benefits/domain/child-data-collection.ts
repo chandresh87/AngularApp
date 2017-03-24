@@ -1,4 +1,4 @@
-import { ChildData } from './childData';
+import { ChildData } from './child-data';
 
 export class ChildDataCollection {
     childCollection: ChildData[];
