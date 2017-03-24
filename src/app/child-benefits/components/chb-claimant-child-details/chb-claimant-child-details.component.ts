@@ -5,7 +5,7 @@ import {ChbClaimantBirthDetails} from "./model/chb-claimant-birth-details"
 import {ChbClaimantBasicEligibiltyDetails} from "./model/chb-claimant-basic-eligibilty"
 import {ChbClaimantBasicEligibiltyExtraDetails} from "./model/chb-child-eligibilty-extra-details"
 import {ChbClaimantEducationDetails} from "./model/chb-child-claimant-education-detail"
-import {Country} from './model/country'
+import {Country} from './model/Country'
 import {ChildClaimantService} from '../../services/child-claimant.service'
 import {Observable} from 'rxjs/Rx';
 
